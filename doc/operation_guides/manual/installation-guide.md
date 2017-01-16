@@ -360,14 +360,14 @@ Please, change the password on the first login. Also, we highly recommend to con
 OpenProject sends (some) mails asynchronously by using background jobs. All such jobs are collected in a queue, so that a separate process can work on them. This means that we have to start the background worker. To automate this, we put the background worker into a cronjob.
 
 ```bash
-[root@all] su - openproject -c "bash -l"
+[root@all] su openproject --login"
 [openproject@all] crontab -e
 ```
 
 Now, the crontab file opens in the standard editor. Add the following entry to the file:
 
 ```cron
-*/1 * * * * cd /home/openproject/openproject-ce; /home/openproject/.rvm/gems/ruby-2.1.5/wrappers/rake jobs:workoff
+*/1 * * * * cd /home/openproject/openproject-ce; /home/openproject/.rbenv/shims/bundle exec rake jobs:workoff
 ```
 
 This will start the worker job every minute.
