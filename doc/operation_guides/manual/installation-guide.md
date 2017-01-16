@@ -360,7 +360,7 @@ Please, change the password on the first login. Also, we highly recommend to con
 OpenProject sends (some) mails asynchronously by using background jobs. All such jobs are collected in a queue, so that a separate process can work on them. This means that we have to start the background worker. To automate this, we put the background worker into a cronjob.
 
 ```bash
-[root@all] su openproject --login"
+[root@all] su openproject --login
 [openproject@all] crontab -e
 ```
 
